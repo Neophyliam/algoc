@@ -14,13 +14,13 @@ extern void *mem_resize(void *ptr, long nbytes, const char *file, int line);
 
 // exported macros
 #define alloc(nbytes) \
-	mem_alloc((nbytes), __FILE__, __LINE__)
+    mem_alloc((nbytes), __FILE__, __LINE__)
 #define calloc(count, nbytes) \
-	mem_calloc((count), (nbytes), __FILE__, __LINE__)
+    mem_calloc((count), (nbytes), __FILE__, __LINE__)
 #define new(p) ((p) = alloc((long) sizeof(*(p))))
 #define newo(p) ((p) = calloc(1, (long) sizeof(*(p))))
 #define dealloc(p) ((void)(mem_free((p), __FILE__, __LINE__), (p) = 0))
 #define resize(p, n) \
-	((p) = mem_resize((p), (n), __FILE__, __LINE__))
+    ((p) = mem_resize((p), (n), __FILE__, __LINE__))
 
 #endif /* end of include guard: MEM_H_H7CNZ6UF */

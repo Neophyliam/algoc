@@ -7,14 +7,14 @@ const except_t KeyboardInterrupt = {"KeyboardInterrupt"};
 
 void sigint_handler(int signum)
 {
-	RAISE(KeyboardInterrupt);
+    RAISE(KeyboardInterrupt);
 }
 
 int main(void)
 {
-	signal(SIGINT, sigint_handler);
-	for (;;) {
-		getchar();
-	}
-	return 0;
+    signal(SIGINT, sigint_handler);
+    for (;;) {
+        getchar();
+    }
+    return 0;
 }
