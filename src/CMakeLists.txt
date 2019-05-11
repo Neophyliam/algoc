@@ -27,3 +27,8 @@ add_library(table table.c)
 target_link_libraries(table except memchk)
 add_executable(wf getword.c wf.c)
 target_link_libraries(wf table atom)
+# text library
+add_library(text text.c)
+target_link_libraries(text except memchk)
+add_executable(test_text test_text.c)
+target_link_libraries(test_text text)

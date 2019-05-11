@@ -24,7 +24,7 @@
 struct text_save_t {
     struct chunk *current;
     char *avail;
-}
+};
 
 /* data */
 static char cset[] =
@@ -67,7 +67,7 @@ static char *text_alloc(int len)
             alloc(sizeof(*current) + 10*1024 + len);
         current->avail = (char *)(current+1);
         current->limit = current->avail + 10*1024 + len;
-        current->limit = NULL;
+        current->link = NULL;
     }
     current->avail += len;
     return current->avail - len;
@@ -107,6 +107,7 @@ T text_put(const char *str)
     assert(str);
     text.len = strlen(str);
     text.str = memcpy(text_alloc(text.len), str, text.len);
+    return text;
 }
 
 char *text_get(char *str, int size, T s)
@@ -272,7 +273,7 @@ int text_chr(T s, int i, int j, int c)
 int text_rchr(T s, int i, int j, int c)
 {
     convert_ij();
-    while (j < i)
+    while (j > i)
         if (s.str[--j] == c)
             return j + 1;
     return 0;
