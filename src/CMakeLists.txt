@@ -32,3 +32,6 @@ add_library(text text.c)
 target_link_libraries(text except memchk)
 add_executable(test_text test_text.c)
 target_link_libraries(test_text text)
+# thread library
+add_library(thread thread.c chan.c)
+target_link_libraries(thread mem except)
